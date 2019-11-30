@@ -22,10 +22,18 @@ public class TestController {
     @GetMapping("/dog/{name}")
     public ResponseEntity<?> dogTest(@PathVariable String name) {
 
-        log.info("Test controller - name: {}", name);
+        log.info("Dog name controller - name: {}", name);
 
         log.info("Test service - isMatilde: {}", testService.isUserMatilde(name));
 
         return ResponseEntity.ok("Name:" + name);
+    }
+
+    @GetMapping("/dog/color/{color}")
+    public ResponseEntity<?> dogColor(@PathVariable String color){
+
+        log.info("Dog name controller - color: {}", color);
+
+        return ResponseEntity.ok("Color: " + color);
     }
 }
