@@ -68,4 +68,14 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping(path = "/bycode")
+    public ResponseEntity<Product> findByCode(@RequestParam String code) {
+        Optional<Product> optProduct = productRepository.findByCode(code);
+        if (optProduct.isPresent()) {
+            return new ResponseEntity<Product>(optProduct.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
